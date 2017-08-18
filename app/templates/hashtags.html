@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <!-- Header -->
+    <header class="header" id="top">
+        <div class="text-vertical-center">
+            <h1>Hashtag Results</h1>
+            {% for word, count in hashtags %}
+              {{word}} : {{count}}
+              <br>
+            {% endfor %}
+            
+        </div>
+    </header>
+{% endblock content %}    
