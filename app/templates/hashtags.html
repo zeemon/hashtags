@@ -3,13 +3,24 @@
 {% block content %}
     <!-- Header -->
     <header class="header" id="top">
-        <div class="text-vertical-center">
-            <h1>Hashtag Results</h1>
-            {% for word, count in hashtags %}
-              {{word}} : {{count}}
-              <br>
-            {% endfor %}
-            
+        <h1 align="center">Hashtag Results</h1>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-1"><b>word</b></div>
+            <div class="col-md-1"><b>count</b></div>
+            <div class="col-md-2"><b>documents</b></div>
+            <div class="col-md-8"><b>sentences</b></div>
+          </div>
+
+          {% for k, h in hashtags %}
+            <div class="row">
+              <div class="col-md-1">{{k}}</div>
+              <div class="col-md-1">{{h.count}}</div>
+              <div class="col-md-2">{{h.documents|join:", "}}</div>
+              <div class="col-md-8">{{h.sentences|join:"<br>"}}</div>
+            </div>
+          {% endfor %}
         </div>
     </header>
+
 {% endblock content %}    
