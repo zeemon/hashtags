@@ -1,30 +1,48 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-    <!-- Header -->
-    <header class="header" id="top">
-        <h1 align="center">Hashtag Results</h1>
-        <div class="container">
-          <div class="row">
-            <div class="col-md-1"><b>word</b></div>
-            <div class="col-md-1"><b>count</b></div>
-            <div class="col-md-2"><b>documents</b></div>
-            <div class="col-md-8"><b>sentences</b></div>
+  <section id="about" class="about">
+      <div class="container text-center">
+          <h2><a href="/">Hashtag Mania</a></h2>
+          <p class="lead">Results from your uploaded text documents.</p>
+      </div>
+      <!-- /.container -->
+  </section>
+  <!-- Services -->
+  <!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
+  <section id="services" class="services bg-primary text-white">
+      <div class="container">
+          <div class="row text-center">
+            <div class="col-1" align="center" ><b>word</b></div>
+            <div class="col-1" align="center" ><b>count</b></div>
+            <div class="col-2" align="center" ><b>documents</b></div>
+            <div class="col-8" align="center" ><b>sentences</b></div>
           </div>
 
           {% for k, h in hashtags %}
             <div class="row">
-              <div class="col-md-1">{{k}}</div>
-              <div class="col-md-1">{{h.count}}</div>
-              <div class="col-md-2">{{h.documents|join:", "}}</div>
-              <div class="col-md-8">
-                <ul>
-                  <li>{{h.sentences|join:"</li><li>"}}</li>
-                </ul>  
+              <div class="col-1">{{k}}</div>
+              <div class="col-1">{{h.count}}</div>
+              <div class="col-2">{{h.documents|join:", "}}</div>
+              <div class="col-8 sentences" data-word="{{k}}">
+                <ol>
+                  {% for s in h.sentences|slice:":2" %}
+                    <li>{{s}}</li>
+                  {% endfor %}
+                  {% if h.sentences.2 %}
+                    <div id="word-{{k}}" class="collapse">  
+                        {% for s in h.sentences|slice:"2:" %}
+                          <li>{{s}}</li>
+                        {% endfor %}
+                    </div>    
+                  </ol>  
+                  <a href="javascript://" class="btn btn-light" data-toggle="collapse" data-target="#word-{{k}}">Show More</a>
+                {% endif %}
               </div>
             </div>
           {% endfor %}
-        </div>
-    </header>
-
+          <!-- /.row -->
+      </div>
+      <!-- /.container -->
+    </section>
 {% endblock content %}    

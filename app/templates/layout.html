@@ -30,7 +30,7 @@
         <ul class="sidebar-nav">
             <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
             <li class="sidebar-brand">
-                <a href="#top" onclick=$( "#menu-close").click();>Home</a>
+                <a href="/">Home</a>
             </li>
         </ul>
     </nav>
@@ -47,6 +47,16 @@
 
     <!-- Custom scripts for this template -->
     <script src="{% static 'js/stylish-portfolio.js' %}"></script>
+
+    <script type="text/javascript">
+      $('.sentences').each(function(index,item){
+        word= $(item).data('word')
+        pattern= new RegExp("\\b("+word+")\\b", "g") 
+        $(item).find('li').each(function(i,list_item){
+            $(list_item).html($(list_item).html().replace(pattern, "<span class='highlighted'>"+word+"</span>"))
+        })
+      })
+    </script>
 
 </body>
 
