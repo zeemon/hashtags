@@ -8,8 +8,8 @@
             <h3>Upload your files to check the top used words</h3>
             <br>
             <!-- <a href="#about" class="page-scroll btn btn-dark btn-lg">Find Out More</a> -->
-            <form method="post" action="/hashtags/" enctype="multipart/form-data">
-              Select files: <input type="file" name="hashfile" multiple>
+            <form method="post" action="/" enctype="multipart/form-data">
+              Select files: <input type="file" name="hashfile" multiple accept=".txt">
               <input type="submit"  class="page-scroll btn btn-dark btn-lg">
               {% csrf_token %}
             </form>
