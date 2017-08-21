@@ -8,7 +8,7 @@ Nothing much. Just install django and do a git clone of this repository :)
 * git clone https://github.com/zeemon/hashtags.git
 
 ## HashCounter
-HashCounter is the main class that does the python processing of the files. Located in hashtags/app/views.py. <br>
+HashCounter is the main class that does the python processing of the files. Located in app/views.py. <br>
 I've also written a couple of tests for the same.
 
 ## Live View
